@@ -21,6 +21,11 @@
  * -Daniel Selifonov
  */
 
+// Lab 9: Fun with Regular Expressions - Completed by Ken Broden
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -28,12 +33,12 @@ import java.util.regex.Matcher;
 
 public class RegExTester {
 
-	public static void main(String[] args) {
-		// sample use of the functions
-		doRegExMatch("cAkE", Pattern.CASE_INSENSITIVE, "This cake is so delicious and moist.");
-		doRegExSplit("us ", "Thank you, for helping us help you help us all.");
-		doRegExReplace("\\d+", 0, "8000", "24 ounces of dark chocolate, 2 cups of sugar, 12 grams of ethyl benzene...");
-	}
+	// public static void main(String[] args) {
+	// 	// sample use of the functions
+	// 	doRegExMatch("cAkE", Pattern.CASE_INSENSITIVE, "This cake is so delicious and moist.");
+	// 	doRegExSplit("us ", "Thank you, for helping us help you help us all.");
+	// 	doRegExReplace("\\d+", 0, "8000", "24 ounces of dark chocolate, 2 cups of sugar, 12 grams of ethyl benzene...");
+	// }
 
 	/**
 	 * Match the regular expression pattern against the input, with optional pattern
@@ -123,7 +128,53 @@ public class RegExTester {
 						+ ") occurrences of \"" + pattern + "\" in sentence \"" + input + "\" with \"" + replace
 						+ "\" to make: \"" + replaced + "\".");
 		System.out.println();
+	}
 
 		// Write your code here:
+
+	public static void main(String[] args) {
+
+		// input file name
+		String fileName = "DFAwiki.txt";
+		
+		// read in the input text from file
+		String input = "";
+
+		try {
+			input = new String(Files.readAllBytes(Paths.get(fileName)));
+		} catch (IOException e) {
+			System.out.println("Error reading input file.");
+			System.exit(1);
+		}
+
+		// find all occurrences of the word "DFA" or "NFA" in the input text
+		System.out.println();
+		doRegExMatch("dfa|nfa", Pattern.CASE_INSENSITIVE, input);
+		System.out.println();
+
+		// find all integer numbers
+		doRegExMatch("\\b\\d+\\b", 0, input);
+		System.out.println();
+
+		// find all negative integers
+		doRegExMatch("\\b-\\d+\\b", 0, input);
+		System.out.println();
+
+		// find all words that start with the letter "t"
+		doRegExMatch("\\bt\\w*", Pattern.CASE_INSENSITIVE, input);
+		System.out.println();
+
+		// find all words that contain the letters "t" AND/OR "i"
+		doRegExMatch("\\b\\w*[ti]\\w*\\b", Pattern.CASE_INSENSITIVE, input);
+		System.out.println();
+
+		// split string by the "|" character
+		doRegExSplit("\\|", input);
+		System.out.println();
+
+		// replace all occurrences of the word "today" with "yesterday"
+		doRegExReplace("today", Pattern.CASE_INSENSITIVE, "yesterday", input);
+		System.out.println();
+	
 	}
 }
