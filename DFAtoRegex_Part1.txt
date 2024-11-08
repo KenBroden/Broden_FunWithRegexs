@@ -1,0 +1,14 @@
+DFA to regex
+Transition log
+
+q2 -0-> q2 , q2 -1-> q2  --->  q2 -0+1-> q2
+add ∅ transitions:
+    q0 -∅-> q2
+    q1 -∅-> q1
+    q2 -∅-> q0
+    q2 -∅-> q1
+q0 -0-> q1 , q1 -0-> q2  --->  q0 -00-> q3
+q1 -1-> q0 , q0 -1-> q0  --->  q0 -1+01-> q0
+collapse q1
+
+Result Regex: (1+01)*00(0+1)*

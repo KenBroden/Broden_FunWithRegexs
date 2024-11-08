@@ -36,3 +36,21 @@ Convert the following regular expressions to NFAs:
 2. `(00)*+(10)*`
 
 Export and submit your NFAs. Results can be found in `Broden_Task2_Part1.png` and `Broden_Task2_Part2.png`.
+
+### Task 3: Convert a DFA to a Regular Expression (8 points)
+
+In this task, you will convert a Deterministic Finite Automaton (DFA) to a regular expression using the JFLAP tool. Follow the tutorial on Converting a FA to a Regular Expression. JFLAP uses a slightly different version of a Generalized NFA (GNFA), allowing self-loops in the starting and final states. Empty set transitions are added as described in the book, and the number of states is reduced by the procedure outlined in the tutorial. The resulting regular expression is combined as `R1*R2R3*`, where `R1` is the self-loop expression in the start state, `R2` is the expression on the transition from the start state to the final state, and `R3` is the loop in the final state.
+
+As you transform your DFA to a 2-state GNFA, document all transition changes that result in non-empty-set expressions in a plain-text file.
+
+Convert the following DFAs:
+
+1. The language of all strings that have at least one occurrence of `00`.
+2. The language of all strings that either start with `0` and don't have any more `0`s, or start with `1` and don't have any more `1`s.
+
+Refer to the conversion notes in [DFAtoRegex_Part1.txt](DFAtoRegex_Part1.txt) and [DFAtoRegex_Part2.txt](DFAtoRegex_Part2.txt) for detailed steps and intermediate expressions. The resulting regular expressions are:
+
+- `(1+01)*00(0+1)*` for the first DFA.
+- `01*+10*` for the second DFA.
+
+Export and submit your resulting expressions and your list of changes. The diagrams for Task 3 can be found in the PDF file [Broden_Lab9_Task3.pdf](Broden_Lab9_Task3.pdf).

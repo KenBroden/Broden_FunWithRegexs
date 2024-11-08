@@ -3,7 +3,10 @@
         "Awiki",
         "CSCI",
         "expressionify",
+        "GNFA",
         "JFLAP",
+        "nonfinal",
+        "noninitial",
         "subexpressions"
     ]
 }
