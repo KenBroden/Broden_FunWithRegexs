@@ -169,11 +169,11 @@ public class RegExTester {
 		System.out.println();
 
 		// split string by the "|" character
-		doRegExSplit("\\|", input);
+		doRegExSplit("\\|", "According to my calculations|the string will be split here|which is exactly what I wanted.");
 		System.out.println();
 
 		// replace all occurrences of the word "today" with "yesterday"
-		doRegExReplace("today", Pattern.CASE_INSENSITIVE, "yesterday", input);
+		doRegExReplace("today", Pattern.CASE_INSENSITIVE, "yesterday", "The day after today is tomorrow, but the day before today is yesterday.");
 		System.out.println();
 	
 	}
